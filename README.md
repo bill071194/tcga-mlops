@@ -4,7 +4,7 @@
 
 Current project progress: Model Deployment
 
-![workflow](/img/MLOps_Workflow.png "MLOps Workflow")
+![workflow](/img/MLOps_Workflow_New.png "MLOps Workflow")
 
 ![architecture](/img/MLOps_Architecture.png "MLOps Architecture")
 
