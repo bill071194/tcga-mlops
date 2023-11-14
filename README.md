@@ -2,7 +2,7 @@
 
 (PROJECT IN PROGRESS)
 
-Current project progress: Model Deployment
+Current project progress: AWS Lambda function and React Frontend
 
 ![workflow](/img/MLOps_Workflow_New.png "MLOps Workflow")
 
