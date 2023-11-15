@@ -4,7 +4,7 @@
 
 Current project progress: ReactJS Frontend
 
-![workflow](/img/MLOps_Workflow_Final.png "MLOps Workflow")
+![workflow](/img/MLOps_Workflow_FinalVer.png "MLOps Workflow")
 
 ![architecture](/img/MLOps_Architecture_FinalVer.png "MLOps Architecture")
 
