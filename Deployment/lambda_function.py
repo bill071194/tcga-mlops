@@ -4,7 +4,7 @@ import json
 
 # grab environment variables
 ENDPOINT_NAME = os.environ['ENDPOINT_NAME']
-runtime = boto3.client('runtime.sagemaker')
+runtime= boto3.client('runtime.sagemaker')
 
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
@@ -20,15 +20,16 @@ def lambda_handler(event, context):
     #print(response)
     result = json.loads(response['Body'].read())
    
-    classes = ['Hematopoietic and Reticuloendothelial Systems Cancer', 
-               'Bronchus and Lung Cancer',
-               'Kidney Cancer',
-               'Breast Cancer',
-               'Uterus Cancer',
-               'Brain Cancer',
-               'Colorectal Cancer',
-               'Pancreas Cancer',
-               'Other Cancer']
+    classes = ['Hematopoietic and reticuloendothelial cancer', 
+                'Brain cancer', 
+                'Bronchus and lung cancer', 
+                'Kidney cancer', 
+                'Breast cancer', 
+                'Uterus cancer', 
+                'Skin cancer', 
+                'Thyroid cancer', 
+                'Colorectal cancer', 
+                'Pancreas cancer']
                
     res_list =  [ float(i) for i in result["probabilities"][0] ]
     return classes[res_list.index(max(res_list))]
