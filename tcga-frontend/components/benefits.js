@@ -14,7 +14,7 @@ const Benefits = (props) => {
           <div>
             <Image
               src={data.image}
-              width="521"
+              width="800"
               height="auto"
               alt="Benefits"
               className={"object-cover"}
@@ -57,9 +57,9 @@ function Benefit(props) {
   return (
     <>
       <div className="flex items-start mt-8 space-x-3">
-        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-indigo-500 rounded-md w-11 h-11 ">
+        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-teal-500 rounded-md w-11 h-11 ">
           {React.cloneElement(props.icon, {
-            className: "w-7 h-7 text-indigo-50",
+            className: "w-7 h-7 text-teal-50",
           })}
         </div>
         <div>
