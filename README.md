@@ -2,7 +2,7 @@
 
 (PROJECT IN PROGRESS)
 
-Current project progress: ReactJS Frontend
+Current project progress: NextJS Frontend
 
 ![workflow](/img/MLOps_Workflow_FinalVer2.png "MLOps Workflow")
 
