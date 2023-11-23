@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "./container";
-import heroImg from "../public/img/hero.png";
+import dnaImg from "../public/img/dna_3d_ver3.png";
 
 const Hero = () => {
   return (
@@ -27,11 +27,11 @@ const Hero = () => {
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="">
             <Image
-              src={heroImg}
-              width="616"
-              height="617"
+              src={dnaImg}
+              width="600"
+              height="600"
               className={"object-cover"}
-              alt="Hero Illustration"
+              alt="DNA Illustration"
               loading="eager"
               placeholder="blur"
             />
