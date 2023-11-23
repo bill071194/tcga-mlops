@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
+import ThemeChanger from "./DarkSwitch";
 
 const Navbar = () => {
   const navigation = [
@@ -68,6 +69,7 @@ const Navbar = () => {
           </svg>
           <span> GitHub Repository</span>
         </a>
+        <ThemeChanger />
         </div>
       </nav>
     </div>

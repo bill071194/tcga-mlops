@@ -35,22 +35,22 @@ const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    question: "How accurate are the generated predictions?",
+    answer: "Currently, the model uses the CatBoost algorithm with a F1-macro of 0.74 and accuracy of 80%. Model performance will improve as the TCGA collects more data.",
   },
   {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
+    question: "How secure is the data collection process?",
+    answer: "The project does not have a database component and will not record or store input patient data to any databases or servers.",
   },
   {
-    question: "What is your refund policy? ",
+    question: "Where does the training data come from?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "The model was trained with data from The Cancer Genome Atlas and the Genome Data Commons, which are both public resources from the National Institute of Health.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Will the project be commercialized in the future?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "The project was developed for academic purposes and will not be commercialized.",
   },
 ];
 

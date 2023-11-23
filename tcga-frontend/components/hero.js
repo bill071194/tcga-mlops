@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "./container";
-import dnaImg from "../public/img/dna_3d_ver3.png";
+import dnaImg from "../public/img/dna_3d_ver5.png";
 
 const Hero = () => {
   return (
@@ -24,12 +24,12 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center w-full lg:w-1/2">
+        <div className="pl-5 flex items-center justify-center w-full lg:w-1/2">
           <div className="">
             <Image
               src={dnaImg}
-              width="600"
-              height="600"
+              width="1000"
+              height="1000"
               className={"object-cover"}
               alt="DNA Illustration"
               loading="eager"
@@ -79,8 +79,8 @@ function DatabricksLogo() {
     <Image
       src="/databricks_logo1.png"
       alt="N"
-      width="150"
-      height="150"
+      width="170"
+      height="170"
     />
   );
 }
