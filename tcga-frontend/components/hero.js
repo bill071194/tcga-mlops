@@ -41,20 +41,20 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
+            <div className="pt-4 text-gray-400 dark:text-gray-400">
               <TCGALogo />
             </div>
             <div className="text-gray-400 dark:text-gray-400">
               <DatabricksLogo />
             </div>
-            <div className="text-gray-400 dark:text-gray-400">
+            <div className="pt-6 text-gray-400 dark:text-gray-400">
               <AWSLogo />
             </div>
-            <div className="pt-1 text-gray-400 dark:text-gray-400">
-              <DockerLogo />
-            </div>
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
+            <div className="pt-3 text-gray-400 dark:text-gray-400">
               <CatboostLogo />
+            </div>
+            <div className="text-gray-400 dark:text-gray-400">
+              <DockerLogo />
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ const Hero = () => {
 function TCGALogo() {
   return (
     <Image
-      src="/tcga_logo.png"
+      src="/tcga_logo1.png"
       alt="N"
       width="150"
       height="150"
@@ -77,7 +77,7 @@ function TCGALogo() {
 function DatabricksLogo() {
   return (
     <Image
-      src="/databricks_logo.png"
+      src="/databricks_logo1.png"
       alt="N"
       width="150"
       height="150"
@@ -88,10 +88,10 @@ function DatabricksLogo() {
 function AWSLogo() {
   return (
     <Image
-      src="/aws_logo.png"
+      src="/aws_logo1.png"
       alt="N"
-      width="150"
-      height="150"
+      width="100"
+      height="100"
     />
   );
 }
@@ -99,10 +99,10 @@ function AWSLogo() {
 function DockerLogo() {
   return (
     <Image
-      src="/docker_logo.png"
+      src="/docker_logo1.png"
       alt="N"
-      width="150"
-      height="150"
+      width="100"
+      height="100"
     />
   );
 }
@@ -110,10 +110,10 @@ function DockerLogo() {
 function CatboostLogo() {
   return (
     <Image
-      src="/catboost_logo.png"
+      src="/catboost_logo1.png"
       alt="N"
-      width="150"
-      height="150"
+      width="80"
+      height="80"
     />
   );
 }
