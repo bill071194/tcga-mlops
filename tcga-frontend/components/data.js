@@ -10,7 +10,7 @@ import {
 import architectureImg from "../public/img/architecture.png";
 import computerImg from "../public/img/computerEMRVer2.png";
 
-const benefitOne = {
+const benefitTwo = {
   title: "Backend Architecture",
   desc: "Databricks and AWS infrastructures.",
   image: architectureImg,
@@ -33,20 +33,20 @@ const benefitOne = {
   ],
 };
 
-const benefitTwo = {
+const benefitOne = {
   title: "Empowering Precision",
   desc: "Harnessing the power of genomic insights, our tool identifies potential cancer vulnerabilities, facilitating proactive steps towards prevention and early intervention.",
   image: computerImg,
   bullets: [
     {
+      title: "Predict Cancer Types",
+      desc: "tca.ai can predict 10 types of common cancer based on patients' patterns of somatic mutations. More target classes including rare cancers will be added in the future.",
+      icon: <AdjustmentsHorizontalIcon />,
+    },
+    {
       title: "EMR Integration",
       desc: "The tcga.ai API could be integrated to any EMR or oncology detection / sequencing workflow.",
       icon: <DocumentChartBarIcon />,
-    },
-    {
-      title: "Various Cancer Types",
-      desc: "tca.ai can predict 10 types of common cancer. More target classes including rare cancers will be added in the future.",
-      icon: <AdjustmentsHorizontalIcon />,
     },
     {
       title: "No Database",

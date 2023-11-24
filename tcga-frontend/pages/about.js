@@ -24,7 +24,7 @@ const About = () => {
           pretitle="TCG.AI"
           title="Integrated Pipeline">
           Data engineering, machine learning, model deployment, seamlessly integrated.
-          <div className="pt-10 pb-12 text-gray-400 dark:text-gray-400">
+          <div className="pt-8 pb-10 text-gray-400 dark:text-gray-400">
             <WorkflowPng />
           </div>
         </SectionTitle>
