@@ -18,7 +18,7 @@ const Predict = () => {
         <SectionTitle
           pretitle="TCG.AI"
           title="Predict Cancer Type">
-          Input patient information and any simple somatic mutations.
+          Input patient information and any available simple somatic mutations.
         </SectionTitle>
         <div className="flex w-full flex-col px-96">
           <InputForm />
@@ -40,26 +40,26 @@ const Predict = () => {
         </select>
 
         <h3 class="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Age</h3>
-        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"></input>
+        <input type="number" id="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"></input>
 
         <h3 class="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Prior Malignancy</h3>
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-1" type="radio" value="" name="PriorMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
+            <input id="PMYes" type="radio" value="" name="PriorMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label for="PMYes" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
         </div>
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-2" type="radio" value="" name="PriorMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+            <input id="PMNo" type="radio" value="" name="PriorMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label for="PMNo" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
         </div>
 
         <h3 class="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Synchronous Malignancy</h3>
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-3" type="radio" value="" name="SynchronousMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label for="bordered-radio-3" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
+            <input id="SMYes" type="radio" value="" name="SynchronousMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label for="SMYes" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
         </div>
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-4" type="radio" value="" name="SynchronousMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label for="bordered-radio-4" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+            <input id="SMNo" type="radio" value="" name="SynchronousMalignancy" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label for="SMNo" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
         </div>
 
         <h3 class="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Simple Somatic Mutations</h3>
@@ -88,8 +88,8 @@ const Predict = () => {
       <div class="grid grid-cols-4 gap-4 justify-between border border-gray-200 rounded-lg px-5 pt-5 pb-5">
         {somaticMutations.map((ssms) => 
         <div class="flex basis-1/4 items-center me-4">
-          <input id="inline-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-          <label for="inline-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{ssms}</label>
+          <input id="ssms-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+          <label for="ssms-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{ssms}</label>
         </div>)}
       </div>
     );
