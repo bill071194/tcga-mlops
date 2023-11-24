@@ -2,27 +2,27 @@ import {
   TableCellsIcon,
   CpuChipIcon,
   CloudIcon,
-  DevicePhoneMobileIcon,
+  DocumentChartBarIcon,
   AdjustmentsHorizontalIcon,
-  SunIcon,
+  CircleStackIcon,
 } from "@heroicons/react/24/solid";
 
 import architectureImg from "../public/img/architecture.png";
-import benefitTwoImg from "../public/img/benefit-two.png";
+import computerImg from "../public/img/computerEMRVer2.png";
 
 const benefitOne = {
-  title: "Model Architecture",
-  desc: "Data engineering, machine learning, model deployment, seamlessly integrated.",
+  title: "Backend Architecture",
+  desc: "Databricks and AWS infrastructures.",
   image: architectureImg,
   bullets: [
     {
       title: "Data Engineering",
-      desc: "Data crawled from TCGA API endpoints with Spark UDFs. Spark and Pandas are then used to transform data to appropriate formats.",
+      desc: "All training data was crawled from TCGA API endpoints with Spark UDFs. Spark and Pandas are then used to transform data to appropriate formats.",
       icon: <TableCellsIcon />,
     },
     {
       title: "Model Development",
-      desc: "CatBoost model was trained and optimized locally with Optuna, then inserted into a SageMaker container.",
+      desc: "CatBoost model was trained and optimized locally with Optuna, then inserted into a SageMaker container for deployment.",
       icon: <CpuChipIcon />,
     },
     {
@@ -34,24 +34,24 @@ const benefitOne = {
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
-  image: benefitTwoImg,
+  title: "Empowering Precision",
+  desc: "Harnessing the power of genomic insights, our tool identifies potential cancer vulnerabilities, facilitating proactive steps towards prevention and early intervention.",
+  image: computerImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
-      icon: <DevicePhoneMobileIcon />,
+      title: "EMR Integration",
+      desc: "The tcga.ai API could be integrated to any EMR or oncology detection / sequencing workflow.",
+      icon: <DocumentChartBarIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
+      title: "Various Cancer Types",
+      desc: "tca.ai can predict 10 types of common cancer. More target classes including rare cancers will be added in the future.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
-      icon: <SunIcon />,
+      title: "No Database",
+      desc: "Patient data is not stored or recorded in any databases, ensuring complete privacy and security.",
+      icon: <CircleStackIcon />,
     },
   ],
 };
