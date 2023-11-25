@@ -75,13 +75,18 @@ const Predict = () => {
       const payloadValues = valuesArr.toString();
       const payloadString = `{ "data" : ${payloadValues} }`;
       const payload = JSON.parse(JSON.stringify(payloadString));
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
       
-      await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload, {headers: {'Access-Control-Allow-Origin': '*'}})
+      await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload, {headers: headers})
       .then(function(response) {
-        alert(response.data);
+        alert(response);
       })
       .catch(function(error) {
-        console.log(error.response.data);
+        console.log(error);
       });
 
       alert(payload);
