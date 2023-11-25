@@ -1,8 +1,6 @@
 # Leveraging MLOps Principles in Developing a Scalable Machine Learning Pipeline for Cancer Classification
 
-(PROJECT IN PROGRESS)
-
-Current project progress: NextJS Frontend
+Deployed frontend: https://tcga-mlops.vercel.app/
 
 ![workflow](/img/MLOps_Workflow_FinalVer2.png "MLOps Workflow")
 
