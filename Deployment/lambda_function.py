@@ -20,16 +20,19 @@ def lambda_handler(event, context):
     #print(response)
     result = json.loads(response['Body'].read())
    
-    classes = ['Hematopoietic and reticuloendothelial cancer', 
-                'Brain cancer', 
-                'Bronchus and lung cancer', 
-                'Kidney cancer', 
-                'Breast cancer', 
-                'Uterus cancer', 
-                'Skin cancer', 
-                'Thyroid cancer', 
-                'Colorectal cancer', 
-                'Pancreas cancer']
+    # classes = ['Hematopoietic and reticuloendothelial cancer', 
+    #             'Brain cancer', 
+    #             'Bronchus and lung cancer', 
+    #             'Kidney cancer', 
+    #             'Breast cancer', 
+    #             'Uterus cancer', 
+    #             'Skin cancer', 
+    #             'Thyroid cancer', 
+    #             'Colorectal cancer', 
+    #             'Pancreas cancer']
                
-    res_list =  [ float(i) for i in result["probabilities"][0] ]
-    return classes[res_list.index(max(res_list))]
+    # res_list =  [ float(i) for i in result["probabilities"][0] ]
+    # return classes[res_list.index(max(res_list))]
+    probs = result["probabilities"][0]
+    return probs
+    
