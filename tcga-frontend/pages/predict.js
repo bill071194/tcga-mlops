@@ -3,11 +3,10 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import SectionTitle from "../components/sectionTitle";
 import { useFormik } from 'formik';
-import axios, { AxiosError } from 'axios';
-import React, { useState } from "react";
+import axios from 'axios';
+import React from "react";
 
 const Predict = () => {
-  const [error, setError] = useState('');
   const somaticMutations = ['TP53', 'PIK3CA', 'TTN', 'CDH1', 'GATA3', 'APC', 'KRAS', 
                             'SYNE1', 'CSMD3', 'MUC16', 'RYR2', 'PTEN', 'NRAS', 'MUC5B', 'TET2', 
                             'PTPN11', 'NOTCH1', 'FBXW7', 'PHF6', 'IGHV270', 'IGLV31', 'IGHV270D', 
@@ -33,52 +32,61 @@ const Predict = () => {
 
   const formik = useFormik({
     initialValues: initialFormikValues,
-    onSubmit:values => {
-      let payload = Object.values(values);
+    onSubmit : values => {
+      let valuesArr = Object.values(values);
       
-      switch (payload[payload.length-1]){
+      switch (valuesArr[valuesArr.length-1]){
         case 'Asian':
-          payload.pop();
-          payload.push('1'); 
-          payload.push('0'); 
-          payload.push('0');
-          payload.push('0');
+          valuesArr.pop();
+          valuesArr.push('1'); 
+          valuesArr.push('0'); 
+          valuesArr.push('0');
+          valuesArr.push('0');
           break;
         case 'Black':
-          payload.pop();
-          payload.push('0'); 
-          payload.push('1'); 
-          payload.push('0');
-          payload.push('0');
+          valuesArr.pop();
+          valuesArr.push('0'); 
+          valuesArr.push('1'); 
+          valuesArr.push('0');
+          valuesArr.push('0');
           break;
         case 'Other':
-          payload.pop();
-          payload.push('0'); 
-          payload.push('0'); 
-          payload.push('1');
-          payload.push('0');
+          valuesArr.pop();
+          valuesArr.push('0'); 
+          valuesArr.push('0'); 
+          valuesArr.push('1');
+          valuesArr.push('0');
           break;
         case 'White':
-          payload.pop();
-          payload.push('0'); 
-          payload.push('0'); 
-          payload.push('0');
-          payload.push('1');
+          valuesArr.pop();
+          valuesArr.push('0'); 
+          valuesArr.push('0'); 
+          valuesArr.push('0');
+          valuesArr.push('1');
           break;
       }
 
-      alert(payload);
-      // try {
-      //   axios.post(process.env.REACT_APP_API_URL, values)
-      //   .then((res) => {alert(res.data)});
-      // } catch(err) {
-      //   if (err && err instanceof AxiosError)
-      //     setError(err.response?.data.message);
-      //   else if (err && err instanceof Error) setError(err.message);
-        
-      //   alert(err);
-      // }
-    },
+      for (let i=0; i<valuesArr.length; i++) {
+        if (valuesArr[i] == true) {
+          valuesArr[i] = '1';
+        }
+      };
+
+      const payloadValue = valuesArr.toString();
+      const payloadJSON = {"data": payloadValue};
+      const payloadString = JSON.stringify(payloadJSON, null, 2);
+      const payload = JSON.parse(payloadString);
+      
+      axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload, {withCredentials: false, headers: {'Access-Control-Allow-Origin': '*'}})
+      .then(function(response) {
+        alert(response);
+      })
+      .catch(function(error) {
+        alert(error);
+      });
+
+      alert(JSON.stringify(payload, null, 2));
+    }
   });
 
   return (
@@ -100,13 +108,13 @@ const Predict = () => {
       <div className="flex w-auto flex-col px-72">
         <form onSubmit={formik.handleSubmit} className="flex flex-col bg-gray-25 shadow-md rounded px-60 pt-6 pb-8 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:text-white items center justify center">
           <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Deceased Status</h3>
-          <select name="deceased" id="deceased" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
-            <option value="1">Alive</option>
-            <option value="0">Deceased</option>
+          <select name="deceased" id="deceased" value={formik.values.deceased} onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+            <option value="0">Alive</option>
+            <option value="1">Deceased</option>
           </select>
 
           <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Race/Ethnicity</h3>
-          <select name="races" id="races" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+          <select name="races" id="races" value={formik.values.races} onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
             <option>White</option>
             <option>Black</option>
             <option>Asian</option>
@@ -114,7 +122,7 @@ const Predict = () => {
           </select>
 
           <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Age</h3>
-          <input name="age" type="text" id="age" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"></input>
+          <input name="age" type="text" id="age" value={formik.values.age} onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"></input>
 
           <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Prior Malignancy</h3>
           <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
@@ -151,7 +159,6 @@ const Predict = () => {
             </svg>
             <span className="pl-2 text-lg">Predict</span>
           </button>
-          {error && <p>{error}</p>}
         </form>
       </div>
       <Footer />
