@@ -2,8 +2,21 @@ import Head from "next/head";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import SectionTitle from "../components/sectionTitle";
-import { React, useContext } from "react";
+import { React, useContext, useState, useEffect } from "react";
 import { DataContext } from "./_app";
+import Image from "next/image";
+import marrowImg from "../public/img/cancertypes/marrow.png";
+import brainImg from "../public/img/cancertypes/brain.png";
+import lungImg from "../public/img/cancertypes/lung.png";
+import kidneyImg from "../public/img/cancertypes/kidney.png";
+import breastImg from "../public/img/cancertypes/breast.png";
+import uterusImg from "../public/img/cancertypes/uterus.png";
+import ovaryImg from "../public/img/cancertypes/ovary.png";
+import prostateImg from "../public/img/cancertypes/prostate.png";
+import skinImg from "../public/img/cancertypes/skin.png";
+import thyroidImg from "../public/img/cancertypes/thyroid.png";
+import rectumImg from "../public/img/cancertypes/rectum.png";
+import pancreasImg from "../public/img/cancertypes/pancreas.png";
 
 const Result = () => {
     const {data} = useContext(DataContext);
@@ -12,16 +25,25 @@ const Result = () => {
                    'Lung Cancer',
                    'Kidney Cancer',
                    'Breast Cancer',
-                   'Uterus Cancer',
+                   'Uterine Cancer',
                    'Ovarian Cancer',
                    'Prostate Cancer',
                    'Skin Cancer', 
                    'Thyroid Cancer', 
                    'Colorectal Cancer',
-                   'Pancreas Cancer'];
+                   'Pancreatic Cancer'];
           
     const res_list =  data.map((d) => parseFloat(d));
-    const cancerType = classes[res_list.indexOf(Math.max(...res_list))];
+    const cancerIndex = res_list.indexOf(Math.max(...res_list));
+    const cancerType = classes[cancerIndex];
+    const imgArr = [marrowImg, brainImg, lungImg, kidneyImg, breastImg, uterusImg, ovaryImg, prostateImg, skinImg, thyroidImg, rectumImg, pancreasImg];
+    // const [cancerImg, setCancerImg] = useState(null);
+    // useEffect(()=>{
+    //     setCancerImg(imgArr[cancerIndex]);
+    // },[]);
+    
+    const imgSrc = imgArr[cancerIndex];
+
     return (
         <>
         <Head>
@@ -45,7 +67,7 @@ const Result = () => {
                     <thead className="text-xs text-white uppercase bg-teal-500 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                         <th scope="col" class="px-6 py-3">Cancer Type</th>
-                        <th scope="col" class="px-6 py-3">Probabilities (%)</th>
+                        <th scope="col" class="px-6 py-3">Prediction Probabilities (%)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,8 +122,15 @@ const Result = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pl-5 flex items-center justify-center content-center w-full lg:w-1/2">
-                <p>Image goes here</p>
+            <div className="flex items-center justify-center content-center w-full lg:w-1/2">
+                <div className="flex flex-col items-center justify-center content-center">
+                    <Image
+                    src={imgSrc}
+                    width="400"
+                    height="400"
+                    className={"object-cover"}
+                    />
+                </div>
             </div>
         </div>
 

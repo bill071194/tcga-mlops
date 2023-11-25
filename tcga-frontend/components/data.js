@@ -40,7 +40,7 @@ const benefitOne = {
   bullets: [
     {
       title: "Predict Cancer Types",
-      desc: "tca.ai can predict 10 types of common cancer based on patients' patterns of somatic mutations. More target classes including rare cancers will be added in the future.",
+      desc: "tca.ai can predict 12 types of common cancer based on patients' patterns of somatic mutations. More target classes including rare cancers will be added in the future.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
