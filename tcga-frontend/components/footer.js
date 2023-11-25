@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div>
               {" "}
-              <Link href="/" className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
+              <Link href="/" className="flex items-center space-x-2 text-2xl font-medium text-teal-500 dark:text-gray-100">
               <Image
                         src="/tcgai_logo.png"
                         alt="N"
@@ -49,10 +49,10 @@ export default function Footer() {
 
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              <Link key={0} href="/about" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">                 
+              <Link key={0} href="/about" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-teal-500 focus:text-teal-500 focus:bg-teal-100 focus:outline-none dark:focus:bg-trueGray-700">                 
                 {navigation[0]}
               </Link>
-              <Link key={1} href="/predict" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">                 
+              <Link key={1} href="/predict" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-teal-500 focus:text-teal-500 focus:bg-teal-100 focus:outline-none dark:focus:bg-trueGray-700">                 
                 {navigation[1]}
               </Link>
             </div>
@@ -60,7 +60,7 @@ export default function Footer() {
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
               {legal.map((item, index) => (
-                <Link key={index} href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700">      
+                <Link key={index} href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-teal-500 focus:text-teal-500 focus:bg-teal-100 focus:outline-none dark:focus:bg-trueGray-700">      
                     {item}
                 </Link>
               ))}
