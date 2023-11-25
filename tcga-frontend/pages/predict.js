@@ -16,30 +16,58 @@ const Predict = () => {
                             'SMAD4', 'CDKN2A', 'BRAF', 'DNAH5', 'PCLO', 'LRP2', 'FREM2', 'FLG', 'TG', 'HRAS', 
                             'KMT2D', 'BTG2', 'B2M', 'PIM1', 'IGHG1'];
 
-  const initialSSMSVals = JSON.parse('{}');
-  
-  somaticMutations.forEach((ssms) => initialSSMSVals.push(ssms + ": '0'"))
-
-  const initialOtherVals = {
-    races: 'White',
+  const initialFormikValues = {
+    deceased: '1',
     age:'',
     PriorMalignancy:'',
     SynchronousMalignancy:'',
-    // TP53: '0', PIK3CA: '0', TTN: '0', CDH1: '0', GATA3: '0', APC: '0', KRAS: '0', 
-    // SYNE1: '0', CSMD3: '0', MUC16: '0', RYR2: '0', PTEN: '0', NRAS: '0', MUC5B: '0', TET2: '0', 
-    // PTPN11: '0', NOTCH1: '0', FBXW7: '0', PHF6: '0', IGHV270: '0', IGLV31: '0', IGHV270D: '0', 
-    // DNMT3A: '0', NPM1: '0', FLT3: '0', IDH2: '0', RUNX1: '0', EGFR: '0', IDH1: '0', ATRX: '0', CIC: '0', 
-    // ARID1A: '0', VHL: '0', PBRM1: '0', SETD2: '0', BAP1: '0', MET: '0', KMT2C: '0', PKHD1: '0', ICE1: '0', 
-    // SMAD4: '0', CDKN2A: '0', BRAF: '0', DNAH5: '0', PCLO: '0', LRP2: '0', FREM2: '0', FLG: '0', TG: '0', HRAS: '0', 
-    // KMT2D: '0', BTG2: '0', B2M: '0', PIM1: '0', IGHG1: '0',
+    TP53: '0', PIK3CA: '0', TTN: '0', CDH1: '0', GATA3: '0', APC: '0', KRAS: '0', 
+    SYNE1: '0', CSMD3: '0', MUC16: '0', RYR2: '0', PTEN: '0', NRAS: '0', MUC5B: '0', TET2: '0', 
+    PTPN11: '0', NOTCH1: '0', FBXW7: '0', PHF6: '0', IGHV270: '0', IGLV31: '0', IGHV270D: '0', 
+    DNMT3A: '0', NPM1: '0', FLT3: '0', IDH2: '0', RUNX1: '0', EGFR: '0', IDH1: '0', ATRX: '0', CIC: '0', 
+    ARID1A: '0', VHL: '0', PBRM1: '0', SETD2: '0', BAP1: '0', MET: '0', KMT2C: '0', PKHD1: '0', ICE1: '0', 
+    SMAD4: '0', CDKN2A: '0', BRAF: '0', DNAH5: '0', PCLO: '0', LRP2: '0', FREM2: '0', FLG: '0', TG: '0', HRAS: '0',
+    KMT2D: '0', BTG2: '0', B2M: '0', PIM1: '0', IGHG1: '0',
+    races: 'White',
   }
-
-  const initialFormikValues = Object.assign({}, initialOtherVals, initialSSMSVals)
 
   const formik = useFormik({
     initialValues: initialFormikValues,
     onSubmit:values => {
-      alert(JSON.stringify(values, null, 2));
+      let payload = Object.values(values);
+      
+      switch (payload[payload.length-1]){
+        case 'Asian':
+          payload.pop();
+          payload.push('1'); 
+          payload.push('0'); 
+          payload.push('0');
+          payload.push('0');
+          break;
+        case 'Black':
+          payload.pop();
+          payload.push('0'); 
+          payload.push('1'); 
+          payload.push('0');
+          payload.push('0');
+          break;
+        case 'Other':
+          payload.pop();
+          payload.push('0'); 
+          payload.push('0'); 
+          payload.push('1');
+          payload.push('0');
+          break;
+        case 'White':
+          payload.pop();
+          payload.push('0'); 
+          payload.push('0'); 
+          payload.push('0');
+          payload.push('1');
+          break;
+      }
+
+      alert(payload);
       // try {
       //   axios.post(process.env.REACT_APP_API_URL, values)
       //   .then((res) => {alert(res.data)});
@@ -71,7 +99,13 @@ const Predict = () => {
       </SectionTitle>
       <div className="flex w-auto flex-col px-72">
         <form onSubmit={formik.handleSubmit} className="flex flex-col bg-gray-25 shadow-md rounded px-60 pt-6 pb-8 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:text-white items center justify center">
-          <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Race/Ethnicity</h3>
+          <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Deceased Status</h3>
+          <select name="deceased" id="deceased" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+            <option value="1">Alive</option>
+            <option value="0">Deceased</option>
+          </select>
+
+          <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Race/Ethnicity</h3>
           <select name="races" id="races" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
             <option>White</option>
             <option>Black</option>
