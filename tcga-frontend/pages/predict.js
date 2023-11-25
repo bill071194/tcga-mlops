@@ -4,9 +4,13 @@ import Footer from "../components/footer";
 import SectionTitle from "../components/sectionTitle";
 import { useFormik } from 'formik';
 import axios from 'axios';
-import React from "react";
+import { React, useContext } from "react";
+import { DataContext } from "./_app";
+import { useRouter } from 'next/navigation'
 
 const Predict = () => {
+  const {setData} = useContext(DataContext);
+  const router = useRouter();
   const somaticMutations = ['TP53', 'PIK3CA', 'TTN', 'CDH1', 'GATA3', 'APC', 'KRAS', 
                             'SYNE1', 'CSMD3', 'MUC16', 'RYR2', 'PTEN', 'NRAS', 'MUC5B', 'TET2', 
                             'PTPN11', 'NOTCH1', 'FBXW7', 'PHF6', 'IGHV270', 'IGLV31', 'IGHV270D', 
@@ -77,7 +81,8 @@ const Predict = () => {
 
       await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload)
       .then(function(response) {
-        alert(JSON.stringify(response.data));
+        setData(response.data);
+        router.push('/result');
       })
       .catch(function(error) {
         console.log(error);
