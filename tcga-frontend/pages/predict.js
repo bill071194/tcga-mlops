@@ -11,26 +11,33 @@ import { useRouter } from 'next/navigation'
 const Predict = () => {
   const {setData} = useContext(DataContext);
   const router = useRouter();
-  const somaticMutations = ['TP53', 'PIK3CA', 'TTN', 'CDH1', 'GATA3', 'APC', 'KRAS', 
-                            'SYNE1', 'CSMD3', 'MUC16', 'RYR2', 'PTEN', 'NRAS', 'MUC5B', 'TET2', 
-                            'PTPN11', 'NOTCH1', 'FBXW7', 'PHF6', 'IGHV270', 'IGLV31', 'IGHV270D', 
-                            'DNMT3A', 'NPM1', 'FLT3', 'IDH2', 'RUNX1', 'EGFR', 'IDH1', 'ATRX', 'CIC', 
-                            'ARID1A', 'VHL', 'PBRM1', 'SETD2', 'BAP1', 'MET', 'KMT2C', 'PKHD1', 'ICE1', 
-                            'SMAD4', 'CDKN2A', 'BRAF', 'DNAH5', 'PCLO', 'LRP2', 'FREM2', 'FLG', 'TG', 'HRAS', 
-                            'KMT2D', 'BTG2', 'B2M', 'PIM1', 'IGHG1'];
+  const somaticMutations = ['TP53', 'PIK3CA', 'TTN', 'CDH1', 'GATA3', 'APC', 'KRAS', 'SYNE1', 'CSMD3', 
+                            'MUC16', 'RYR2', 'USH2A', 'NF1', 'PTEN', 'NRAS', 'MUC5B', 'TET2', 'PTPN11', 'NOTCH1', 
+                            'FBXW7', 'PHF6', 'IGHV270', 'IGLV31', 'IGHV270D', 'DNMT3A', 'NPM1', 'FLT3', 'IDH2', 
+                            'RUNX1', 'EGFR', 'IDH1', 'ATRX', 'CIC', 'ARID1A', 'VHL', 'PBRM1', 'SETD2', 'BAP1', 'MET', 
+                            'KMT2C', 'PKHD1', 'ICE1', 'SMAD4', 'CDKN2A', 'BRAF', 'DNAH5', 'PCLO', 'LRP2', 'FREM2', 
+                            'FLG', 'TG', 'HRAS', 'KMT2D', 'BTG2', 'B2M', 'PIM1', 'IGHG1', 'SPOP', 'FOXA1'];
 
   const initialFormikValues = {
-    deceased: '1',
+    deceased: '0',
     age:'',
+    sex:'0',
     PriorMalignancy:'',
     SynchronousMalignancy:'',
-    TP53: '0', PIK3CA: '0', TTN: '0', CDH1: '0', GATA3: '0', APC: '0', KRAS: '0', 
-    SYNE1: '0', CSMD3: '0', MUC16: '0', RYR2: '0', PTEN: '0', NRAS: '0', MUC5B: '0', TET2: '0', 
-    PTPN11: '0', NOTCH1: '0', FBXW7: '0', PHF6: '0', IGHV270: '0', IGLV31: '0', IGHV270D: '0', 
-    DNMT3A: '0', NPM1: '0', FLT3: '0', IDH2: '0', RUNX1: '0', EGFR: '0', IDH1: '0', ATRX: '0', CIC: '0', 
-    ARID1A: '0', VHL: '0', PBRM1: '0', SETD2: '0', BAP1: '0', MET: '0', KMT2C: '0', PKHD1: '0', ICE1: '0', 
-    SMAD4: '0', CDKN2A: '0', BRAF: '0', DNAH5: '0', PCLO: '0', LRP2: '0', FREM2: '0', FLG: '0', TG: '0', HRAS: '0',
-    KMT2D: '0', BTG2: '0', B2M: '0', PIM1: '0', IGHG1: '0',
+    TP53: '0',PIK3CA: '0',TTN: '0',CDH1: '0',GATA3: '0',
+    APC: '0',KRAS: '0',SYNE1: '0',CSMD3: '0',MUC16: '0',
+    RYR2: '0',USH2A: '0',NF1: '0',PTEN: '0',NRAS: '0',
+    MUC5B: '0',TET2: '0',PTPN11: '0',NOTCH1: '0',
+    FBXW7: '0',PHF6: '0',IGHV270: '0',IGLV31: '0',
+    IGHV270D: '0',DNMT3A: '0',NPM1: '0',FLT3: '0',
+    IDH2: '0',RUNX1: '0',EGFR: '0',IDH1: '0',
+    ATRX: '0',CIC: '0',ARID1A: '0',VHL: '0',
+    PBRM1: '0',SETD2: '0',BAP1: '0',MET: '0',
+    KMT2C: '0',PKHD1: '0',ICE1: '0',SMAD4: '0',
+    CDKN2A: '0',BRAF: '0',DNAH5: '0',PCLO: '0',
+    LRP2: '0',FREM2: '0',FLG: '0',TG: '0',HRAS: '0',
+    KMT2D: '0',BTG2: '0',B2M: '0',PIM1: '0',IGHG1: '0',
+    SPOP: '0',FOXA1: '0',
     races: 'White',
   }
 
@@ -108,7 +115,7 @@ const Predict = () => {
       </SectionTitle>
       <div className="flex w-auto flex-col px-72">
         <form onSubmit={formik.handleSubmit} className="flex flex-col bg-gray-25 shadow-md rounded px-60 pt-6 pb-8 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:text-white items center justify center">
-          <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Deceased Status</h3>
+          <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Deceased Status</h3>
           <select name="deceased" id="deceased" value={formik.values.deceased} onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
             <option value="0">Alive</option>
             <option value="1">Deceased</option>
@@ -120,6 +127,12 @@ const Predict = () => {
             <option>Black</option>
             <option>Asian</option>
             <option>Other</option>
+          </select>
+
+          <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Sex</h3>
+          <select name="races" id="races" onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+            <option value="1">Male</option>
+            <option value="0">Female</option>
           </select>
 
           <h3 className="pt-8 mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Age</h3>

@@ -7,16 +7,18 @@ import { DataContext } from "./_app";
 
 const Result = () => {
     const {data} = useContext(DataContext);
-    const classes = ['Hematopoietic and reticuloendothelial cancer', 
-                    'Brain cancer', 
-                    'Bronchus and lung cancer', 
-                    'Kidney cancer', 
-                    'Breast cancer', 
-                    'Uterus cancer', 
-                    'Skin cancer', 
-                    'Thyroid cancer', 
-                    'Colorectal cancer', 
-                    'Pancreas cancer'];
+    const classes = ['Hematopoietic and Reticuloendothelial Systems Cancer', 
+                   'Brain Cancer',
+                   'Bronchus and Lung Cancer',
+                   'Kidney Cancer',
+                   'Breast Cancer',
+                   'Uterus Cancer',
+                   'Ovarian Cancer',
+                   'Prostate Cancer',
+                   'Skin Cancer', 
+                   'Thyroid Cancer', 
+                   'Colorectal Cancer',
+                   'Pancreas Cancer'];
           
     const res_list =  data.map((d) => parseFloat(d));
     console.log(res_list);
