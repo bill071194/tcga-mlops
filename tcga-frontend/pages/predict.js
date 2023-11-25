@@ -32,7 +32,7 @@ const Predict = () => {
 
   const formik = useFormik({
     initialValues: initialFormikValues,
-    onSubmit : values => {
+    onSubmit : async values => {
       let valuesArr = Object.values(values);
       
       switch (valuesArr[valuesArr.length-1]){
@@ -72,20 +72,19 @@ const Predict = () => {
         }
       };
 
-      const payloadValue = valuesArr.toString();
-      const payloadJSON = {"data": payloadValue};
-      const payloadString = JSON.stringify(payloadJSON, null, 2);
-      const payload = JSON.parse(payloadString);
+      const payloadValues = valuesArr.toString();
+      const payloadString = `{ "data" : ${payloadValues} }`;
+      const payload = JSON.parse(JSON.stringify(payloadString));
       
-      axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload, {withCredentials: false, headers: {'Access-Control-Allow-Origin': '*'}})
+      await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload, {headers: {'Access-Control-Allow-Origin': '*'}})
       .then(function(response) {
-        alert(response);
+        alert(response.data);
       })
       .catch(function(error) {
         alert(error);
       });
 
-      alert(JSON.stringify(payload, null, 2));
+      alert(payload);
     }
   });
 
