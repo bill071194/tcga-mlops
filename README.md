@@ -1,4 +1,4 @@
-# Leveraging MLOps Principles in Developing a Scalable Machine Learning Pipeline for Cancer Classification
+# Leveraging MLOps Principles in Developing a Scalable End-to-End Machine Learning Pipeline for Cancer Classification
 
 Deployed frontend: https://tcga-mlops.vercel.app/
 
