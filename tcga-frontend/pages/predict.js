@@ -81,7 +81,7 @@ const Predict = () => {
         alert(response.data);
       })
       .catch(function(error) {
-        alert(error);
+        console.log(error.response.data);
       });
 
       alert(payload);
