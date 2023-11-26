@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [data, setData] = useState([]);
   return (
     <DataContext.Provider value={{data, setData}}>
-      <ThemeProvider attribute="className">
+      <ThemeProvider attribute="className" defaultTheme="light">
         <Component {...pageProps} />
       </ThemeProvider>
     </DataContext.Provider>
