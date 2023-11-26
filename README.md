@@ -18,8 +18,6 @@ To use collected data from TCGA for machine learning purposes, the project emplo
 
 TCGA provides convenient API endpoints for all querying purposes. To crawl data from these APIs in an efficient manner, Apache Spark was the tool of choice. By using UDFs (User Defined Functions), the project took advantage of Spark's parallelism to execute a large amount of API calls in short amounts of time, querying the necessary data for training without significant latencies. Data crawled from the API endpoints include standard demographic factors such as Age, Race, and Sex. For cancer related attributes, prior malignancy, synchronous malignancy, deceased status, and 59 somatic mutations were chosen as features. The somatic mutations were selected based on their VEP impact to each cancer type.
 
-#### Insert Spark screenshot here
-
 ### Data Transformation
 
 To transform the queried data, Pandas and Boto3 were used to load raw data from the S3 bucket, examine values, transform values, drop missing values, and hot encode values to render the data appropriate for machine learning. After transformation, the data are split into training and validation sets for machine learning.
