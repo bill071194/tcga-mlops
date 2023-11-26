@@ -51,4 +51,19 @@ To invoke the aforementioned SageMaker endpoint and get predictions from the mod
 
 ![architecture](/img/MLOps_Architecture_FinalVer2.png "MLOps Architecture")
 
+## NextJS Frontend
+
+To demonstrate the functionality of the model and the pipeline, a NextJS web application was developed. The application collects input data as a form, and uses Axios to send a request to the Lambda function using REST API POST function. The prediction was then rendered with appropriate illustrations for the end user.
+
+## Challenges
+
+Throughout the development cycle of the project, there were several notable obstacles that hampered the final robustness of the pipeline.
+- Cost barriers: Databricks and AWS services all incur costs per data usage, but many features are also locked behind paywals, such as job scheduling. This barrier prevented the pipeline from becoming fully automated and requires manual re-ingestion, re-training, and re-deployment. Fortunately, TCGA updates their data at a slower pace and requires no data streaming techniques or real-time inference.
+- Deployment barriers: At the moment, the CatBoost algorithm on SageMaker does not support the BYOM (bring your own model) approach in deploying custom model artifacts using existing containers. This obstacle leads to extra efforts in re-training the model on SageMaker in addition to local training. Technically, the model could be trained and tuned on SageMaker from the get go, but this would incur additional data usage and costs as mentioned above. Therefore, the hybrid approach of tuning locally and re-training on SageMaker is still viable.
+- AWS IAM roles: accessing the AWS ecosystem from external platforms (e.g.: loading data from Databricks to S3) requires careful IAM configurations and generating access keys, which leads to potential security concerns. The premium version of Databricks allows for direct mounting onto S3 and having access as an IAM role, but again, this leads back to the first barrier which is costs.
+
+## Acknowledgements
+
+The author would like to extend his sincere gratitude to the TCGA team who worked tirelessly on their genomic data portal. All data used in this project are publicly available and are de-identified without HIPAA/FIPA concerns. Additionally, the project was created for academic purposes with no intentions for any commercial applications in the future.
+
 
