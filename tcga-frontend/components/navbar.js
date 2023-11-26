@@ -74,7 +74,7 @@ const Navbar = () => {
           </svg>
           <span> GitHub Repository</span>
         </a>
-        <ThemeChanger />
+        {/* <ThemeChanger /> */}
         </div>
       </nav>
     </div>
