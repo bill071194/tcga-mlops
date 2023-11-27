@@ -14,7 +14,7 @@ Early identification of cancer types remains one of the most crucial aspects of 
 
 To use collected data from TCGA for machine learning purposes, the project employs Apache Spark and Pandas on a Databricks cluster for data crawling, ingestion, and transformation, and AWS S3 buckets for data loading.
 
-<u> ### Data Crawling and Ingestion </ u>
+### <u> Data Crawling and Ingestion </ u>
 
 TCGA provides convenient API endpoints for all querying purposes. To crawl data from these APIs in an efficient manner, Apache Spark was the tool of choice. By using UDFs (User Defined Functions), the project took advantage of Spark's parallelism to execute a large amount of API calls in short amounts of time, querying the necessary data for training without significant latencies. Data crawled from the API endpoints include standard demographic factors such as Age, Race, and Sex. For cancer related attributes, prior malignancy, synchronous malignancy, deceased status, and 59 somatic mutations were chosen as features. The somatic mutations were selected based on their VEP impact to each cancer type.
 
