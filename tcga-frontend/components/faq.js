@@ -38,7 +38,7 @@ const faqdata = [
   {
     question: "Which cancer types are being predicted?",
     answer:
-      "The project focuses on 12 common cancer types, which are Leukemia, Brain Cancer, Lung Cancer, Kidney Cancer, Breast Cancer, Uterus Cancer, Ovarian Cancer, Prostate Cancer, Skin Cancer, Thyroid Cancer, Colorectal Cancer, and Pancreas Cancer. Additional cancer types will be targeted in the future as TCGA training data increases.",
+      "The project focuses on 12 common cancer types, which are Leukemia, Brain Cancer, Lung Cancer, Kidney Cancer, Breast Cancer, Uterine Cancer, Ovarian Cancer, Prostate Cancer, Skin Cancer, Thyroid Cancer, Colorectal Cancer, and Pancreatic Cancer. Additional cancer types will be targeted in the future as TCGA training data increases.",
   },
   {
     question: "How accurate are the generated predictions?",
