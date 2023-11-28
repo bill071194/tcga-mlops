@@ -86,7 +86,7 @@ const Predict = () => {
       const payloadValues = valuesArr.toString();
       const payload = { "data": payloadValues };
 
-      await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload)
+      await axios.post(process.env.NEXT_PUBLIC_SAGEMAKER_API, payload)
       .then(function(response) {
         setData(response.data);
         router.push('/result');
@@ -115,7 +115,7 @@ const Predict = () => {
         title="Predict Cancer Type">
         Input patient information and any available simple somatic mutations.
       </SectionTitle>
-      <div className="flex w-auto flex-col px-72">
+      <div className="flex w-auto flex-col px-64">
         <form onSubmit={formik.handleSubmit} className="flex flex-col bg-gray-25 shadow-md rounded px-60 pt-6 pb-8 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:text-white items center justify center">
           <h3 className="mb-4 font-semibold text-teal-500 dark:text-white text-start">Patient Status</h3>
           <select name="deceased" id="deceased" value={formik.values.deceased} onChange={formik.handleChange} required className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
