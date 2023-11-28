@@ -92,7 +92,7 @@ const Predict = () => {
         router.push('/result');
       })
       .catch(function(error) {
-        console.log(error);
+        alert(error);
       });
 
       // alert(JSON.stringify(payload, null, 2));
