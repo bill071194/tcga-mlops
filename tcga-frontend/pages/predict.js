@@ -86,7 +86,7 @@ const Predict = () => {
       const payloadValues = valuesArr.toString();
       const payload = { "data": payloadValues };
 
-      await axios.post(process.env.NEXT_PUBLIC_SAGEMAKER_API, payload)
+      await axios.post("https://d9y6nr4rka.execute-api.us-west-2.amazonaws.com/tcga/tcga-classification", payload)
       .then(function(response) {
         setData(response.data);
         router.push('/result');
