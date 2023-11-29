@@ -35,7 +35,7 @@ Common Python libraries for EDA such as Pandas, Seaborn, Numpy, and Matplotlib w
 
 ### Model training
 
-For the machine learning model, 2 popular boosting algorithms were compared: LightGBM and CatBoost. After training and tuning the algorithms' hyperparameters with Bayesian Optimization libraries (bayes opt and Optuna), the CatBoost algorithm yielded better metrics (**F1-macro: 0.70**, **Accuracy: 0.75**) and was chosen for the final deployed model. The tuned hyperparameters were converted into a JSON object and loaded into a S3 bucket for the SageMaker model to utilize. After training and tuning the model locally, a AWS SageMaker training job was created and trained using the same hyperparameters for reproducable evaluation metrics. 
+For the machine learning model, 2 popular boosting algorithms were compared: LightGBM and CatBoost. After training and tuning the algorithms' hyperparameters with Bayesian Optimization libraries (bayes opt and Optuna), the CatBoost algorithm yielded better metrics (**F1-macro: 0.70**, **Accuracy: 0.75**) and was chosen for the final deployed model. The tuned hyperparameters were converted into a JSON object and loaded into a S3 bucket for the SageMaker model to utilize. After training and tuning the model locally, a AWS SageMaker training job was created and trained using the same hyperparameters for reproducible evaluation metrics. 
 
 ## Model Deployment
 
